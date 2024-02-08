@@ -8,14 +8,21 @@ class test_settings(unittest.TestCase):
     def test_check_first_name(self):
         item = settings()
         
-        item.first_name = "  Yaroslav  "
+        item.name = "  Yaroslav  "
         
-        assert item.first_name == "Yaroslav"
+        assert item.name == "Yaroslav"
 
     def test_check_open_settings(self):
         maneger = settings_maneger()
         
         result=maneger.open("settings.json")
+
+        assert result==True
+
+    def test_check_open_settings2(self):
+        maneger = settings_maneger()
+        
+        result=maneger.open("data/setingi.json")
 
         assert result==True
 
@@ -30,5 +37,16 @@ class test_settings(unittest.TestCase):
 
     def test_check_meneger_convert(self):
         maneger=settings_maneger()
-        result=maneger.open("settings.json")
+        maneger.open("settings.json")
         maneger.convert()
+
+
+    def test_check_settings_data(self):
+        maneger=settings_maneger()
+
+        maneger.open("settings.json")
+        maneger.convert()
+        params=maneger.data.keys()
+
+        for param in params:
+            assert getattr(maneger.settings,param)==maneger.data[param]

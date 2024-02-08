@@ -1,5 +1,4 @@
 
-
 class settings:
     __first_name = ""
     __INN=None
@@ -9,67 +8,58 @@ class settings:
     __name=""
     __type_ownership=""
 
-    
-    @property
-    def first_name(self):
-        return self.__first_name
-    
-    @first_name.setter
-    def first_name(self, value: str):
-
-        if not isinstance(value, str):
-            raise Exception("Некорректный аргумент!")
-        
-        self.__first_name = value.strip()
-        
     @property
     def INN(self):
         return self.__INN
     
     @INN.setter
-    def INN(self, value: str):
+    def INN(self, value: int): 
 
-        if not isinstance(value, int) or len(self.INN)!=12:
+        if not isinstance(value, int) or len(str(value))!=12:
             raise Exception("Некорректный аргумент!")
         
-        self.__INN = value.strip()
+        self.__INN = value
+
 
     @property
     def BIK(self):
         return self.__BIK
     
     @BIK.setter
-    def BIK(self, value: str):
+    def BIK(self, value: int):
 
-        if not isinstance(value, int) or len(self.BIK)!=9:
+        if not isinstance(value, int) or len(str(value))!=9:
             raise Exception("Некорректный аргумент!")
         
-        self.__BIK = value.strip()
+        self.__BIK = value
+
 
     @property
     def score(self):
         return self.__score
     
     @score.setter
-    def score(self, value: str):
+    def score(self, value: int):
 
-        if not isinstance(value, int):
+        if not isinstance(value, int) or len(str(value))!=11:
             raise Exception("Некорректный аргумент!")
         
-        self.__score = value.strip()
+        self.__score = value
+
 
     @property
     def cor_score(self):
         return self.__cor_score
-    
+   
     @cor_score.setter
-    def cor_score(self, value: str):
+    def cor_score(self, value: int):
 
-        if not isinstance(value, int):
+        if not isinstance(value, int) or len(str(value))!=11:
             raise Exception("Некорректный аргумент!")
         
-        self.__cor_score = value.strip()
-        
+        self.__cor_score = value
+
+
     @property
     def name(self):
         return self.__name
@@ -82,6 +72,7 @@ class settings:
         
         self.__name = value.strip()
 
+
     @property
     def type_ownership(self):
         return self.__type_ownership
@@ -89,7 +80,7 @@ class settings:
     @type_ownership.setter
     def type_ownership(self, value: str):
 
-        if not isinstance(value, str):
+        if not isinstance(value, str) or len(value)>5:
             raise Exception("Некорректный аргумент!")
         
         self.__type_ownership = value.strip()
